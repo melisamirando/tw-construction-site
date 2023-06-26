@@ -1,17 +1,48 @@
 import React, { useState, useEffect } from "react";
-import Product from "./components/Product";
-import CartItem from "./components/CartItem";
+import Product from "../components/Product";
+import CartItem from "../components/CartItem";
+
+import images1 from "../assets/images/Product1.png";
+import images2 from "../assets/images/Product2.png";
+import images3 from "../assets/images/Product3.png";
+import images4 from "../assets//images/Product4.png";
+
 
 function ConstructionSite() {
   const [products, setProducts] = useState([
-    { id: 1, title: "Product 1", price: 100.0, quantity: 0 },
-    { id: 2, title: "Product 2", price: 200.0, quantity: 0 },
-    { id: 3, title: "Product 3", price: 250.0, quantity: 0 },
-    { id: 4, title: "Product 4", price: 250.0, quantity: 0 },
+    {
+      id: 1,
+      title: "High Quality Smart Card Keyless Digital",
+      price: 100.0,
+      quantity: 0,
+      image: images1,
+    },
+    {
+      id: 2,
+      title: "High Security Smart Door Lock Wi-Fi",
+      price: 200.0,
+      quantity: 0,
+      image: images2,
+    },
+    {
+      id: 3,
+      title: "Newest BLE Smart Locks Door Knob",
+      price: 250.0,
+      quantity: 0,
+      image: images3,
+    },
+    // {
+    //   id: 4,
+    //   title: "Safety Cat Eyes Camera View Electric Digital Big Gate Wi-Fi Fingerprint Smart Door Lock",
+    //   price: 250.0,
+    //   quantity: 0,
+    //   image: images4,
+    // },
   ]);
+  
 
   const [cart, setCart] = useState([]);
-  const [overallTotal, setOverallTotal] = useState(0);
+  const [overallTotal, setOverallTotal] = useState(0); 
 
   useEffect(() => {
     const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
@@ -87,18 +118,29 @@ function ConstructionSite() {
   };
 
   return (
-    <div>
-      <h1>My Shop</h1>
-      <div>
-        <h2>Products</h2>
-        {renderProducts()}
+    <>
+      <div className="bg-gray-100 min-h-screen">
+        <header className="bg-white shadow">
+          <div className="container mx-auto py-4 px-8 ">
+            <h1 className="text-2xl font-bold text-gray-800">Shopping Cart</h1>
+          </div>
+        </header>
+        <h2 className="container mx-auto text-4xl font-bold mt-8 py-4">Products</h2>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {renderProducts()}
+        </div>
       </div>
-      <div>
-        <h2>Cart</h2>
+      <div className="container mx-auto mt-8">
+        <h2 className="text-2xl font-bold">Cart</h2>
         {renderCartItems()}
-        <h2>Overall Total: ${overallTotal}</h2>
+        <h2 className="container mx-auto text-2xl font-bold">Overall Total: ${overallTotal}</h2>
+        <footer className="bg-gray-200 py-4 px-8 mt-8">
+        <div className="container mx-auto text-center">
+          <p className="text-gray-600">&copy; 2023 Shopping Cart. All rights reserved.</p>
+        </div>
+      </footer>
       </div>
-    </div>
+    </>
   );
 }
 
