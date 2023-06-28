@@ -7,7 +7,6 @@ import images2 from "../assets/images/Product2.png";
 import images3 from "../assets/images/Product3.png";
 import images4 from "../assets//images/Product4.png";
 
-
 function ConstructionSite() {
   const [products, setProducts] = useState([
     {
@@ -31,18 +30,17 @@ function ConstructionSite() {
       quantity: 0,
       image: images3,
     },
-    // {
-    //   id: 4,
-    //   title: "Safety Cat Eyes Camera View Electric Digital Big Gate Wi-Fi Fingerprint Smart Door Lock",
-    //   price: 250.0,
-    //   quantity: 0,
-    //   image: images4,
-    // },
+    {
+      id: 4,
+      title: "Safety Cat Eyes Camera View Electric Digital",
+      price: 250.0,
+      quantity: 0,
+      image: images4,
+    },
   ]);
-  
 
   const [cart, setCart] = useState([]);
-  const [overallTotal, setOverallTotal] = useState(0); 
+  const [overallTotal, setOverallTotal] = useState(0);
 
   useEffect(() => {
     const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
@@ -119,27 +117,39 @@ function ConstructionSite() {
 
   return (
     <>
-      <div className="bg-gray-100 min-h-screen">
+      {/* <div className="bg-gray-100 max-h-screen"> */}
         <header className="bg-white shadow">
           <div className="container mx-auto py-4 px-8 ">
-            <h1 className="text-2xl font-bold text-gray-800">Shopping Cart</h1>
+            <h1 className="container mx-auto text-4xl font-bold text-gray-800 text-center">
+              Shop Smart
+            </h1>
           </div>
         </header>
-        <h2 className="container mx-auto text-4xl font-bold mt-8 py-4">Products</h2>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="container mx-auto text-4xl font-bold mt-8 py-4 text-center bg-gray-200">
+          Products
+        </h2>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 ">
           {renderProducts()}
         </div>
-      </div>
-      <div className="container mx-auto mt-8">
-        <h2 className="text-2xl font-bold">Cart</h2>
-        {renderCartItems()}
-        <h2 className="container mx-auto text-2xl font-bold">Overall Total: ${overallTotal}</h2>
-        <footer className="bg-gray-200 py-4 px-8 mt-8">
-        <div className="container mx-auto text-center">
-          <p className="text-gray-600">&copy; 2023 Shopping Cart. All rights reserved.</p>
+
+        <div className="container mx-auto mt-8">
+          <h2 className="container mx-auto text-2xl font-bold">Cart</h2>
+          {renderCartItems()}
         </div>
-      </footer>
-      </div>
+        
+        <div className="container mx-auto grid grid-cols-3 md:grid-cols-3 gap-2">
+          <h2 className="container mx-auto text-2xl font-bold">
+            Overall Total: ${overallTotal}
+          </h2>
+        </div>
+        <footer className="bg-black py-4 px-8 mt-8">
+          <div className="container mx-auto text-center">
+            <p className="text-white">
+              &copy; 2023 Shop Smart. All rights reserved.
+            </p>
+          </div>
+        </footer>
+      {/* </div> */}
     </>
   );
 }
